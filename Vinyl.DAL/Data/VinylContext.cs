@@ -12,7 +12,7 @@ namespace Vinyl.DAL.Data
     public class VinylContext : DbContext
     {
         public VinylContext()
-            :base ("Name=DefaultConnection")
+            :base ("Name=VinylContext")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }
