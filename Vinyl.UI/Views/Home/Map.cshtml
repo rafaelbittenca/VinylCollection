@@ -1,0 +1,13 @@
+﻿ <!-- Map Section -->
+@*<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2"><p>&nbsp;</p></div>
+        <div class="col-sm-8"><p id="map"></p></div>
+        <div class="col-sm-2"><p>&nbsp;</p></div>
+    </div>
+</div>*@
+<p id="map"></p>
+<script src="~/Scripts/Project/Map.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=@ViewBag.GoogleMapApiKey&callback=initMap">
+</script>

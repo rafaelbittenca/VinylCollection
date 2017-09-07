@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Artists";
+}
+<!--Navbar Custom for child pages -->
+<link href="~/Content/navbar-custom.css" rel="stylesheet" />
+
+<hr /><hr /><hr />
+<section id="page-artists" class="content">
+    <div class="container">
+        @{ if (ViewBag.ReadOnly == "NO")
+            {
+                <p>
+                    <a href="#" class="btn btn-success" data-action="Create">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        New Artist
+                    </a>
+                </p>
+            }
+            else
+            {
+                <p>
+                    <a href="@Url.Action("FullAccess", "Artist")" class="btn btn-info">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        Get Full Access
+                    </a>
+                </p>
+            }
+        }
+        <table id="gridDados" class="table table-striped">
+            <thead>
+                <tr>
+                    <th data-column-id="FirstMidName" data-order="asc">First Name</th>
+                    <th data-column-id="LastName">Last Name</th>
+                    <th data-column-id="FullName">Full Name</th>
+                    <th data-column-id="BirthDate" data-formatter="BirthDate">Date Birth</th>
+                    @{
+                        if (ViewBag.ReadOnly == "NO")
+                        {
+                            <th data-formatter="formActions" data-sortable="false">Actions</th>
+                        }
+                        else
+                        {
+                            <th data-formatter="readonly" data-sortable="false">Actions</th>
+                        }
+                    }
+                </tr>
+            </thead>
+        </table>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="contentModal"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts Form Control -->
+        @section scripts{
+            <script src="~/Scripts/site.js"></script>
+            <script src="~/Scripts/toastr.js"></script>
+            @Scripts.Render("~/bundles/jquerybootgrid")
+            <script src="~/Scripts/Project/ControlarGrid.js"></script>
+
+            <script type="text/javascript">
+                var controller = "Artist";
+                var urlAction = "@Url.Action("Listar")";
+                $(document).ready(configurarControles);
+            </script>
+        }
+        <!-- Style Grid and Toastr messages -->
+        @section estilos{
+            <link href="~/Content/jquery.bootgrid.css" rel="stylesheet" />
+            <link href="~/Content/toastr.css" rel="stylesheet" />
+        }
+    </div>
+</section>
+
+<script>
+    document.getElementById("link-artists").href = "#page-artists";
+    document.getElementById("link-about").href = "@Url.Action("Index", "Home")#page-about";
+    document.getElementById("link-contact").href = "@Url.Action("Index", "Home")#page-contact";
+</script>

@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Record";
+}
+<!--Navbar Custom for child pages -->
+<link href="~/Content/navbar-custom.css" rel="stylesheet" />
+
+<hr /><hr /><hr />
+<section id="page-records" class="content">
+    <div class="container">
+        <br /><br /><br /><br />
+        <!-- Working On It -->
+        <div class="row text-center">
+            <div class="col-md-12">
+                <div>
+                    <h3 class="section-title">Working On It</h3>
+                    <div class="section-title-divider"></div>
+                    <img class="img-circle timeline-image" src="~/Content/img/aboutplay.jpg" alt="">
+                    <h4 class="about-label">Vinyl Collection</h4>
+                    <ul class="list-inline social-buttons">
+                        <li class="item-rede-social">
+                            <a target="_blank" href="https://github.com/rafaelbittenca/Vinyl">
+                                <img class="social-media" src="~/Content/img/about/github.png" />
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="text-muted">
+                        This application is using:<br /><br />
+                        C# Microsoft .NET MVC5; Entity Framework 6.0 with CodeFirst; SQLServer;<br />
+                        BootStrap; Html5; CSS3; JQuery; JQueryBootGrid; JavaScript; JSON; Toastr; <br />
+                        Generic Repository; Unit of Work; Autofac(IoC); AutoMapper;<br /><br />
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Working On It -->
+        <!-- Scripts Form Control -->
+        @section scripts{
+            <script src="~/Scripts/site.js"></script>
+            <script src="~/Scripts/toastr.js"></script>
+            @Scripts.Render("~/bundles/jquerybootgrid")
+            <script src="~/Scripts/Project/ControlarGrid.js"></script>
+
+            <script type="text/javascript">
+                var controller = "Record";
+                var urlAction = "@Url.Action("Listar")";
+                $(document).ready(configurarControles);
+            </script>
+        }
+        <!-- Style Grid and Toastr messages -->
+        @section estilos{
+            <link href="~/Content/jquery.bootgrid.css" rel="stylesheet" />
+            <link href="~/Content/toastr.css" rel="stylesheet" />
+        }
+    </div>
+</section>
+
+<script>
+    document.getElementById("link-about").href = "@Url.Action("Index", "Home")#page-about";
+    document.getElementById("link-contact").href = "@Url.Action("Index", "Home")#page-contact";
+    document.getElementById("link-records").href = "#page-records";
+</script>
