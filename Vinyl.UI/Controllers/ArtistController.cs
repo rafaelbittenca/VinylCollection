@@ -31,7 +31,7 @@ namespace Vinyl.UI.Controllers
             return View();
         }
         // GET: Artist FullActions
-        //[Authorize]
+        [Authorize]
         public ActionResult FullAccess()
         {
             ViewBag.ReadOnly = "NO";

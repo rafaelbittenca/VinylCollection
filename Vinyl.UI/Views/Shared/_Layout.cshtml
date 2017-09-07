@@ -35,14 +35,14 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        @*@if (User.Identity.IsAuthenticated)
+                        @if (User.Identity.IsAuthenticated)
                         {
                             <a id="link-artists" class="page-scroll" href="@Url.Action("FullAccess", "Artist")">Artists</a>
                         }
                         else
-                        {*@
+                        {
                             <a id="link-artists" class="page-scroll" href="@Url.Action("Index", "Artist")">Artists</a>
-                        @*}*@
+                        }
                     </li>
                     <li>
                         <a id="link-records" class="page-scroll" href="@Url.Action("Index", "Record")">Records</a>
