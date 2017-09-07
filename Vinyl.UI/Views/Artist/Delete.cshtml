@@ -23,10 +23,8 @@
     @using (Html.BeginForm("Delete", "Artist", FormMethod.Post, new { id = "formCrud" }))
     {
         @Html.AntiForgeryToken()
-
         <div class="form-actions no-color">
             <input type="button" value="Delete" class="btn btn-default" /> 
-            @*|@Html.ActionLink("Back to List", "Index")*@
         </div>
     }
 </div>

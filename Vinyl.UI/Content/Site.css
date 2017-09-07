@@ -35,9 +35,6 @@ header .intro-text .intro-lead-in {
   margin-bottom: 25px;
 }
 header .intro-text .intro-heading {
-  /*
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;*/
   font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-size: 50px;
@@ -57,10 +54,6 @@ header .intro-text .intro-heading {
     margin-bottom: 25px;
   }
   header .intro-text .intro-heading {
-    /*
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    */
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 700;
     font-size: 75px;
@@ -78,11 +71,6 @@ footer {
   background-color: #222222;
   border-color: transparent;
 }
-
-/*
-#fed136 #2d83fc #dd3b2a #12662e
-#fec503 #026bff #db1702
-*/
 
 .navbar-custom .navbar-brand {
   color: #fed136;
@@ -460,7 +448,7 @@ img::-moz-selection {
     padding: 0 100px 20px 20px;
   }
 }
-/* ----------------------------------------------------------------------------------- */
+
 #about-me {
   padding: 70px 0 70px 0;
 }
@@ -493,4 +481,3 @@ img::-moz-selection {
   }
 }
 
-/* ----------------------------------------------------------------------------------- */

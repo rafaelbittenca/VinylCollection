@@ -13,7 +13,6 @@ namespace Vinyl.UI.Controllers
         // Working on it
 
         //private readonly IUnitOfWork _unitOfWork;
-
         //public RecordController(IUnitOfWork unitOfWork)
         //{
         //    _unitOfWork = unitOfWork;

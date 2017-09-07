@@ -46,9 +46,8 @@ namespace Vinyl.DAL.Migrations
 
                 new Artist() { FirstMidName="George", LastName="Harrison", BirthDate = new DateTime(1943, 02, 25) },
 
-                new Artist() { FirstMidName="Pink Floyd", LastName="", BirthDate = new DateTime(1965, 01, 01) },
-                new Artist() { FirstMidName="Pearl Jam", LastName="", BirthDate = new DateTime(1990, 01, 01) },
-                new Artist() { FirstMidName="Kings of Leon", LastName="", BirthDate = new DateTime(2000, 01, 01) }
+                new Artist() { FirstMidName="Pink", LastName="Floyd", BirthDate = new DateTime(1965, 01, 01) },
+                new Artist() { FirstMidName="Pearl", LastName=" Jam", BirthDate = new DateTime(1990, 01, 01) },
             };
 
             artists.ForEach(a => context.Artists.Add(a));
