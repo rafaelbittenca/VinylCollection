@@ -315,6 +315,7 @@
     <Content Include="Content\img\aboutme\CartaDeltacon.pdf" />
     <Content Include="Content\img\aboutme\CartaKoerich.pdf" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\analyticstracking.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
