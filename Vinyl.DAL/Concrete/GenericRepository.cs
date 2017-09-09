@@ -18,13 +18,11 @@ namespace Vinyl.DAL.Concrete
             _entities = context;
         }
 
-        public T Get(int? id)                    // ?? Revisar
+        public T Get(int? id)                    // ?? RV
         {
-            // Here we are working with a DbContext, not PlutoContext. So we don't have DbSets 
-            // such as Courses or Authors, and we need to use the generic Set() method to access them.
             return _entities.Set<T>().Find(id);
         }
-        public virtual IEnumerable<T> GetAll()    // ?? Revisar
+        public virtual IEnumerable<T> GetAll()    // ?? RV
         {
 
             // Note that here I've repeated Context.Set<TEntity>() in every method and this is causing
@@ -36,8 +34,8 @@ namespace Vinyl.DAL.Concrete
             // _entities.Where();
             // _entities.SingleOrDefault();
             // 
-            // I didn't change it because I wanted the code to look like the videos. But feel free to change
-            // this on your own.
+            // Feel free to change this on your own.
+            //
             return _entities.Set<T>().ToList();
         }
 

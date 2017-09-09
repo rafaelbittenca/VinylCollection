@@ -31,6 +31,8 @@ namespace Vinyl.UI
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
             builder.RegisterModule(new RepositoryModule());
+
+            // In the future could be implemented a DDD. So a new layer with a ServiceModule is required
             //builder.RegisterModule(new ServiceModule());
             builder.RegisterModule(new EFModule());
 
@@ -38,8 +40,7 @@ namespace Vinyl.UI
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-            // Configurando o AutoMapper para registrar os profiles
-            // de mapeamento durante a inicialização da aplicação.
+            // Configuring AutoMapper to register the mapping profiles during application startup.
             AutoMapperConfig.RegisterMappings();
         }
     }

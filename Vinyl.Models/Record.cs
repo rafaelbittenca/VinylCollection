@@ -8,7 +8,6 @@
         public byte[] Cover { get; set; }
 
         public long ArtistId { get; set; }
-        //public virtual Artist Artist { get; set; }
         public Artist Artist { get; set; }
     }
 }
