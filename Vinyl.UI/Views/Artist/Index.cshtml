@@ -29,9 +29,10 @@
         <table id="gridDados" class="table table-striped">
             <thead>
                 <tr>
-                    <th data-column-id="FirstMidName" data-order="asc">First Name</th>
+                    @*<th data-column-id="FirstMidName" data-order="asc">First Name</th>
                     <th data-column-id="LastName">Last Name</th>
-                    <th data-column-id="FullName">Full Name</th>
+                    <th data-column-id="FullName">Full Name</th>*@
+                    <th data-column-id="Name"  data-order="asc">Name</th>
                     <th data-column-id="BirthDate" data-formatter="BirthDate">Date Birth</th>
                     @{
                         if (ViewBag.ReadOnly == "NO")

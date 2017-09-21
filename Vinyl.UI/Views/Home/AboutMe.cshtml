@@ -1,9 +1,8 @@
 ﻿@{
-    ViewBag.Title = "About Me";
+      ViewBag.Title = "About Me";
 }
 <!--Navbar Custom for child pages -->
 <link href="~/Content/navbar-custom.css" rel="stylesheet" />
-
 <section id="about-me">
     <div class="container">
 
@@ -218,7 +217,7 @@
             </div>
         </div>
         <br /><br />
-
+      
         <!-- Language -->
         <div class="row">
             <div class="col-lg-12">
@@ -245,7 +244,7 @@
 </script>
 @if (User.Identity.IsAuthenticated)
 {
-<script>
-    document.getElementById("link-artists").href = "@Url.Action("FullAccess", "Artist")";
-</script>
+    <script>
+        document.getElementById("link-artists").href = "@Url.Action("FullAccess", "Artist")";
+    </script>
 }

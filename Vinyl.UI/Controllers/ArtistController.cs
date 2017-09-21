@@ -55,7 +55,7 @@ namespace Vinyl.UI.Controllers
            if (!String.IsNullOrWhiteSpace(parametrosPaginacao.SearchPhrase))
             {
                 // Dynamic LINQ 
-                artists = artists.Where("FullName.Contains(@0) ", parametrosPaginacao.SearchPhrase);
+                artists = artists.Where("Name.Contains(@0) ", parametrosPaginacao.SearchPhrase);
             }
 
             var artistsFiltered = artists.OrderBy(parametrosPaginacao.CampoOrdenado)
@@ -83,7 +83,7 @@ namespace Vinyl.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult Create([Bind(Include = "Id,FirstMidName,LastName,BirthDate,AboutLink")] ArtistViewModel artist)
+        public JsonResult Create([Bind(Include = "Id,Name,BirthDate,AboutLink")] ArtistViewModel artist)
         {
             if (ModelState.IsValid)
             {
@@ -143,7 +143,7 @@ namespace Vinyl.UI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult Edit([Bind(Include = "Id,FirstMidName,LastName,BirthDate,AboutLink")] ArtistViewModel artistView)
+        public JsonResult Edit([Bind(Include = "Id,Name,BirthDate,AboutLink")] ArtistViewModel artistView)
         {
             if (ModelState.IsValid)
             {

@@ -12,6 +12,13 @@
 
     <div class="row">
         <div class="form-group col-xs-10">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @*<div class="row">
+        <div class="form-group col-xs-10">
             @Html.LabelFor(model => model.FirstMidName)
             @Html.EditorFor(model => model.FirstMidName, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.FirstMidName, "", new { @class = "text-danger" })
@@ -23,7 +30,7 @@
             @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>*@
     <div class="row">
         <div class="form-group col-xs-5">
             @Html.LabelFor(model => model.BirthDate)

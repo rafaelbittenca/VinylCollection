@@ -57,6 +57,7 @@
     <Compile Include="Concrete\UserRepository.cs" />
     <Compile Include="Configuration\ArtistConfiguration.cs" />
     <Compile Include="Configuration\RecordConfiguration.cs" />
+    <Compile Include="Configuration\TypeConfigurationExtensions.cs" />
     <Compile Include="Configuration\UserConfiguration.cs" />
     <Compile Include="Contract\IArtistRepository.cs" />
     <Compile Include="Contract\IAuthenticationRepository.cs" />
@@ -68,12 +69,61 @@
     <Compile Include="Migrations\201706131239030_Initial.Designer.cs">
       <DependentUpon>201706131239030_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709181914154_AddUniqueIndexFirstLastNameOnTableArtist.cs" />
+    <Compile Include="Migrations\201709181914154_AddUniqueIndexFirstLastNameOnTableArtist.Designer.cs">
+      <DependentUpon>201709181914154_AddUniqueIndexFirstLastNameOnTableArtist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709181930246_RemoveUniqueIndexFirstLastNameOnTableArtist.cs" />
+    <Compile Include="Migrations\201709181930246_RemoveUniqueIndexFirstLastNameOnTableArtist.Designer.cs">
+      <DependentUpon>201709181930246_RemoveUniqueIndexFirstLastNameOnTableArtist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709182108017_AddUniqueIndexFirstLastNameOnTableArtist1.cs" />
+    <Compile Include="Migrations\201709182108017_AddUniqueIndexFirstLastNameOnTableArtist1.Designer.cs">
+      <DependentUpon>201709182108017_AddUniqueIndexFirstLastNameOnTableArtist1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709211257303_AddPropNamePersonClass.cs" />
+    <Compile Include="Migrations\201709211257303_AddPropNamePersonClass.Designer.cs">
+      <DependentUpon>201709211257303_AddPropNamePersonClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709211303527_UpdatePropNameArtistClass.cs" />
+    <Compile Include="Migrations\201709211303527_UpdatePropNameArtistClass.Designer.cs">
+      <DependentUpon>201709211303527_UpdatePropNameArtistClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709211307205_AddUniqueIndexPropNameArtistClass.cs" />
+    <Compile Include="Migrations\201709211307205_AddUniqueIndexPropNameArtistClass.Designer.cs">
+      <DependentUpon>201709211307205_AddUniqueIndexPropNameArtistClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709211315156_DeletePropFirstAndLastNameFromPersonClass.cs" />
+    <Compile Include="Migrations\201709211315156_DeletePropFirstAndLastNameFromPersonClass.Designer.cs">
+      <DependentUpon>201709211315156_DeletePropFirstAndLastNameFromPersonClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706131239030_Initial.resx">
       <DependentUpon>201706131239030_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181914154_AddUniqueIndexFirstLastNameOnTableArtist.resx">
+      <DependentUpon>201709181914154_AddUniqueIndexFirstLastNameOnTableArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709181930246_RemoveUniqueIndexFirstLastNameOnTableArtist.resx">
+      <DependentUpon>201709181930246_RemoveUniqueIndexFirstLastNameOnTableArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709182108017_AddUniqueIndexFirstLastNameOnTableArtist1.resx">
+      <DependentUpon>201709182108017_AddUniqueIndexFirstLastNameOnTableArtist1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709211257303_AddPropNamePersonClass.resx">
+      <DependentUpon>201709211257303_AddPropNamePersonClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709211303527_UpdatePropNameArtistClass.resx">
+      <DependentUpon>201709211303527_UpdatePropNameArtistClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709211307205_AddUniqueIndexPropNameArtistClass.resx">
+      <DependentUpon>201709211307205_AddUniqueIndexPropNameArtistClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709211315156_DeletePropFirstAndLastNameFromPersonClass.resx">
+      <DependentUpon>201709211315156_DeletePropFirstAndLastNameFromPersonClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
