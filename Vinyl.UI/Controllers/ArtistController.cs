@@ -55,7 +55,7 @@ namespace Vinyl.UI.Controllers
            if (!String.IsNullOrWhiteSpace(parametrosPaginacao.SearchPhrase))
             {
                 // Dynamic LINQ 
-                artists = artists.Where("Name.Contains(@0) ", parametrosPaginacao.SearchPhrase);
+                artists = artists.Where("Name.ToLower().Contains(@0) ", parametrosPaginacao.SearchPhrase.ToLower());
             }
 
             var artistsFiltered = artists.OrderBy(parametrosPaginacao.CampoOrdenado)

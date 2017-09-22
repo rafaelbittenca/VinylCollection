@@ -1,61 +1,56 @@
 namespace Vinyl.DAL.Migrations
 {
-    using Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+	using Models;
+	using System;
+	using System.Collections.Generic;
+	using System.Data.Entity;
+	using System.Data.Entity.Migrations;
+	using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Vinyl.DAL.Data.VinylContext>
-    {
-        public Configuration()
-        {
-            AutomaticMigrationsEnabled = true;
-        }
+	internal sealed class Configuration : DbMigrationsConfiguration<Vinyl.DAL.Data.VinylContext>
+	{
+		public Configuration()
+		{
+			AutomaticMigrationsEnabled = true;
+		}
 
-        protected override void Seed(Vinyl.DAL.Data.VinylContext context)
-        {
-            //  This method will be called after migrating to the latest version.
+		protected override void Seed(Vinyl.DAL.Data.VinylContext context)
+		{
+			//  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+			//  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+			//  to avoid creating duplicate seed data. E.g.
+			//
+			//    context.People.AddOrUpdate(
+			//      p => p.FullName,
+			//      new Person { FullName = "Andrew Peters" },
+			//      new Person { FullName = "Brice Lambson" },
+			//      new Person { FullName = "Rowan Miller" }
+			//    );
+			//
 
-      //      List<Artist> artists = new List<Artist>()
-      //      {
-      //          new Artist() { FirstMidName="Eric", LastName="Clapton", AboutLink="http://www.ericclapton.com/", BirthDate = new DateTime(1945, 03, 30) },
-      //          new Artist() { FirstMidName="Ben", LastName="Harper", AboutLink="http://www.benharper.com/", BirthDate = new DateTime(1969, 10, 28) },
-      //          new Artist() { FirstMidName="Bob", LastName="Dylan", AboutLink="https://www.bobdylan.com/", BirthDate = new DateTime(1941, 05, 24) },
-      //          new Artist() { FirstMidName="David", LastName="Gilmour", AboutLink="http://www.davidgilmour.com/", BirthDate = new DateTime(1946, 03, 06) },
+		//	List<Artist> artists = new List<Artist>()
+		//{
+		//    new Artist() { Name="Eric Clapton", AboutLink="http://www.ericclapton.com/", BirthDate = new DateTime(1945, 03, 30) },
+		//    new Artist() { Name="Ben Harper", AboutLink="http://www.benharper.com/", BirthDate = new DateTime(1969, 10, 28) },
+		//    new Artist() { Name="Bob Dylan", AboutLink="https://www.bobdylan.com/", BirthDate = new DateTime(1941, 05, 24) },
+		//    new Artist() { Name="David Gilmour", AboutLink="http://www.davidgilmour.com/", BirthDate = new DateTime(1946, 03, 06) },
+		//    new Artist() { Name="B. B. King", AboutLink="http://www.bbking.com/", BirthDate = new DateTime(1925, 09, 16) },
+		//    new Artist() { Name="Bob Marley", BirthDate = new DateTime(1945, 02, 06) },
+		//    new Artist() { Name="John Mayer", BirthDate = new DateTime(1977, 10, 16) },
+		//    new Artist() { Name="John Lennon", BirthDate = new DateTime(1975, 10, 09) },
+		//    new Artist() { Name="Roger Waters", BirthDate = new DateTime(1943, 09, 06) },
+		//    new Artist() { Name="Bruce Springsteen", BirthDate = new DateTime(1949, 09, 23) },
+		//    new Artist() { Name="Tim Maia", BirthDate = new DateTime(1942, 09, 28) },
+		//    new Artist() { Name="George Harrison", BirthDate = new DateTime(1943, 02, 25) },
+		//    new Artist() { Name="Pink Floyd", BirthDate = new DateTime(1965, 01, 01) },
+		//    new Artist() { Name="Pearl Jam", BirthDate = new DateTime(1990, 01, 01) },
+		//};
 
-		    //new Artist() { FirstMidName="B. B.", LastName="King", AboutLink="http://www.bbking.com/", BirthDate = new DateTime(1925, 09, 16) },
+		//	artists.ForEach(a => context.Artists.Add(a));
 
-		    //new Artist() { FirstMidName="Bob", LastName="Marley", BirthDate = new DateTime(1945, 02, 06) },
-      //          new Artist() { FirstMidName="John", LastName="Mayer", BirthDate = new DateTime(1977, 10, 16) },
-      //          new Artist() { FirstMidName="John", LastName="Lennon", BirthDate = new DateTime(1975, 10, 09) },
-      //          new Artist() { FirstMidName="Roger", LastName="Waters", BirthDate = new DateTime(1943, 09, 06) },
-      //          new Artist() { FirstMidName="Bruce", LastName="Springsteen", BirthDate = new DateTime(1949, 09, 23) },
-                
-      //          new Artist() { FirstMidName="Tim", LastName="Maia", BirthDate = new DateTime(1942, 09, 28) },
+		//	context.SaveChanges();
 
-      //          new Artist() { FirstMidName="George", LastName="Harrison", BirthDate = new DateTime(1943, 02, 25) },
-
-      //          new Artist() { FirstMidName="Pink", LastName="Floyd", BirthDate = new DateTime(1965, 01, 01) },
-      //          new Artist() { FirstMidName="Pearl", LastName=" Jam", BirthDate = new DateTime(1990, 01, 01) },
-      //      };
-
-      //      artists.ForEach(a => context.Artists.Add(a));
-
-      //      context.SaveChanges();
-
-        }
-    }
+		}
+	}
 }
