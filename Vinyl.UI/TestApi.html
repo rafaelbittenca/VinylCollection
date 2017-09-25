@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var ulArtits = $('#ulArtits');
+            $('#btn').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "api/artist/",
+                    dataType: 'jsonp',
+                    success: function (data) {
+                        ulArtits.empty();
+                        $.each(data, function (index, val) {
+                            console.log(index);
+                            console.log(val);
+                            var fullText = val.name + ' - ' + val.aboutLink;
+                            ulArtits.append('<li>' + fullText + '</li>');
+                        });
+                    }
+                });
+            });
+            $('#btnClear').click(function () {
+                ulArtits.empty();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <input id="btn" type="button" value="Get All Artists" />
+        <input id="btnClear" type="button" value="Clear" />
+        <ul id="ulArtits" />
+    </div>
+</body>
+</html>

@@ -58,8 +58,8 @@ namespace Vinyl.UI
 			#region DiffDomain
 			//JSONP-To allow cross domain ajax calls by enabling JSONP
 			//Install-Package WebApiContrib.Formatting.Jsonp
-			//var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
-			//config.Formatters.Insert(0, jsonpFormatter);
+			var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
+			config.Formatters.Insert(0, jsonpFormatter);
 			#endregion
 
 			#region routes
