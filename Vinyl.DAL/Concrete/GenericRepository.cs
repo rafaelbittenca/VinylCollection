@@ -18,11 +18,11 @@ namespace Vinyl.DAL.Concrete
             _entities = context;
         }
 
-        public T Get(int? id)                    // ?? RV
+        public T Get(int? id)                     // RV
         {
             return _entities.Set<T>().Find(id);
         }
-        public virtual IEnumerable<T> GetAll()    // ?? RV
+        public virtual IEnumerable<T> GetAll()    // RV
         {
 
             // Note that here I've repeated Context.Set<TEntity>() in every method and this is causing

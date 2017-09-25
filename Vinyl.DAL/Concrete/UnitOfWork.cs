@@ -25,15 +25,15 @@ namespace Vinyl.DAL.Concrete
             Artists = new ArtistRepository(_dbContext);
             Records = new RecordRepository(_dbContext);
 
-            Users = new UserRepository(_dbContext);             //??RV
-            Auths = new AuthenticationRepository(_dbContext);   //??RV
+            Users = new UserRepository(_dbContext);             //RV
+            Auths = new AuthenticationRepository(_dbContext);   //RV
         }
 
         public IArtistRepository Artists { get; private set; }
         public IRecordRepository Records { get; private set; }
 
-        public IAuthenticationRepository Auths { get; private set; }    //??RV
-        public IUserRepository Users { get; private set; }              //??RV
+        public IAuthenticationRepository Auths { get; private set; }    //RV
+        public IUserRepository Users { get; private set; }              //RV
         /// <summary>
         /// Saves all pending changes
         /// </summary>

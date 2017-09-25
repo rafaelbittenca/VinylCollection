@@ -17,20 +17,8 @@ namespace Vinyl.DAL.Configuration
 			this.Property(t => t.Name)
 			    .HasColumnType("varchar")
                       .HasMaxLength(200)
-                      .HasUniqueIndexAnnotation("UQ_Name", 0)
+                      .HasUniqueIndexAnnotation("UQ_Name", 0) // Index Unique - Contraint
                       .IsRequired();
-
-			//this.Property(t => t.FirstMidName)
-			//    .HasColumnType("varchar")
-			//    .HasMaxLength(200)
-			//    .HasUniqueIndexAnnotation("UQ_First_Last_Name", 0)
-			//    .IsRequired();
-
-			//this.Property(t => t.LastName)
-			//    .HasColumnType("varchar")
-			//    .HasMaxLength(200)
-			//    .HasUniqueIndexAnnotation("UQ_First_Last_Name", 1)
-			//    .IsRequired();
 
 			this.Property(a => a.CreatedBy)
 			    .HasColumnType("varchar")

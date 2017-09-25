@@ -16,18 +16,6 @@ namespace Vinyl.UI.ViewModels
         [Display(Name = "Name")]
         public string Name { get; set; }
 
-        //[Required]
-        //[StringLength(200, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
-        //[DataType(DataType.Text)]
-        //[Display(Name = "Last Name")]
-        //public string LastName { get; set; }
-
-        //[Required]
-        //[StringLength(200, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
-        //[DataType(DataType.Text)]
-        //[Display(Name = "First Name")]
-        //public string FirstMidName { get; set; }
-
         // Globalization
         //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)] 
@@ -37,12 +25,5 @@ namespace Vinyl.UI.ViewModels
         public string AboutLink { get; set; }
         public byte[] Picture { get; set; }
 
-        //public string FullName
-        //{
-        //    get
-        //    {
-        //        return LastName + ", " + FirstMidName;
-        //    }
-        //}
     }
 }
