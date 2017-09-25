@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace Vinyl.UI.Controllers.Api
 {
 	[RoutePrefix("api/artist")]
-	//[Authorize]
+	[Authorize]
 	public class ArtistController : ApiController
 	{
 		private readonly IUnitOfWork _unitOfWork;
