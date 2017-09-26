@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json.Serialization;
 using System;
-using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
-using Microsoft.Owin.Security.OAuth;
 using WebApiContrib.Formatting.Jsonp;
+using System.Web.Http.Cors;
 
 namespace Vinyl.UI
 {
@@ -60,6 +59,15 @@ namespace Vinyl.UI
 			//Install-Package WebApiContrib.Formatting.Jsonp
 			var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
 			config.Formatters.Insert(0, jsonpFormatter);
+
+			//To allow cross domain ajax calls by enabling CORS
+			//Install-Package Microsoft.AspNet.WebApi.Cors 
+			//Origins,Headers,Methods
+			//EnableCorsAttribute cors = new 
+			//     EnableCorsAttribute("http://localhost:8023,http://blabla:8041", "*", "GET,POST");
+			EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+			config.EnableCors(cors);
+
 			#endregion
 
 			#region routes
