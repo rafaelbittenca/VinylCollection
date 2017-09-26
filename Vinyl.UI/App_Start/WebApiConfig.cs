@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using WebApiContrib.Formatting.Jsonp;
 using System.Web.Http.Cors;
+using Microsoft.Owin.Security.OAuth;
 
 namespace Vinyl.UI
 {

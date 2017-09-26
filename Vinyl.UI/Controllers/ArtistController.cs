@@ -13,198 +13,199 @@ using Vinyl.UI.ViewModels;
 
 namespace Vinyl.UI.Controllers
 {
-    public class ArtistController : Controller
-    {
-        private readonly IUnitOfWork _unitOfWork;
+	public class ArtistController : Controller
+	{
+		private readonly IUnitOfWork _unitOfWork;
 
-        public ArtistController(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
+		public ArtistController(IUnitOfWork unitOfWork)
+		{
+			_unitOfWork = unitOfWork;
+		}
 
-        #region List
+		#region List
 
-        // GET: Artist
-        public ActionResult Index()
-        {
-            ViewBag.ReadOnly = "YES";
-            return View();
-        }
-        // GET: Artist FullActions
-        [Authorize]
-        public ActionResult FullAccess()
-        {
-            ViewBag.ReadOnly = "NO";
-            return View("Index");
-        }
+		// GET: Artist
+		public ActionResult Index()
+		{
+			ViewBag.ReadOnly = "YES";
+			return View();
+		}
+		// GET: Artist FullActions
+		[Authorize]
+		public ActionResult FullAccess()
+		{
+			ViewBag.ReadOnly = "NO";
+			return View("Index");
+		}
 
-        public JsonResult Listar(ParametrosPaginacao parametrosPaginacao)
-        {
-            DadosFiltrados dadosFiltrados = FiltrarEPaginar(parametrosPaginacao);
+		public JsonResult Listar(ParametrosPaginacao parametrosPaginacao)
+		{
+			DadosFiltrados dadosFiltrados = FiltrarEPaginar(parametrosPaginacao);
 
-            return Json(dadosFiltrados, JsonRequestBehavior.AllowGet);
-        }
+			return Json(dadosFiltrados, JsonRequestBehavior.AllowGet);
+		}
 
-        private DadosFiltrados FiltrarEPaginar(ParametrosPaginacao parametrosPaginacao)
-        {
+		private DadosFiltrados FiltrarEPaginar(ParametrosPaginacao parametrosPaginacao)
+		{
 
-            var artists = _unitOfWork.Artists.GetAll();
+			var artists = _unitOfWork.Artists.GetAll();
 
-            int total = artists.Count();
+			int total = artists.Count();
 
-           if (!String.IsNullOrWhiteSpace(parametrosPaginacao.SearchPhrase))
-            {
-                // Dynamic LINQ 
-                artists = artists.Where("Name.ToLower().Contains(@0) ", parametrosPaginacao.SearchPhrase.ToLower());
-            }
+			if (!String.IsNullOrWhiteSpace(parametrosPaginacao.SearchPhrase))
+			{
+				// Dynamic LINQ 
+				artists = artists.Where("Name.ToLower().Contains(@0) ", parametrosPaginacao.SearchPhrase.ToLower());
+			}
 
-            var artistsFiltered = artists.OrderBy(parametrosPaginacao.CampoOrdenado)
-                                         .Skip((parametrosPaginacao.Current - 1) * parametrosPaginacao.RowCount)
-                                         .Take(parametrosPaginacao.RowCount).ToList();
+			var artistsFiltered = artists.OrderBy(parametrosPaginacao.CampoOrdenado)
+							     .Skip((parametrosPaginacao.Current - 1) * parametrosPaginacao.RowCount)
+							     .Take(parametrosPaginacao.RowCount).ToList();
 
-            DadosFiltrados dadosFiltrados = new DadosFiltrados(parametrosPaginacao)
-            {
-                rows = artistsFiltered.ToList(),
-                total = total
-            };
-            return dadosFiltrados;
-        }
-        #endregion
-                
-        #region Create
-        // GET: Artist/Create
-        public ActionResult Create()
-        {
-            return PartialView();
-        }
+			DadosFiltrados dadosFiltrados = new DadosFiltrados(parametrosPaginacao)
+			{
+				rows = artistsFiltered.ToList(),
+				total = total
+			};
+			return dadosFiltrados;
+		}
+		#endregion
 
-        // POST: Artist/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public JsonResult Create([Bind(Include = "Id,Name,BirthDate,AboutLink")] ArtistViewModel artist)
-        {
-            if (ModelState.IsValid)
-            {
-                var artistView = Mapper.Map<ArtistViewModel, Artist>(artist);
-                _unitOfWork.Artists.Add(artistView);
-                _unitOfWork.Complete();
-                return Json(new { resultado = true, message = "Artist successfully registered!" });
-            }
-            else
-            {
-                IEnumerable<ModelError> erros = ModelState.Values.SelectMany(item => item.Errors);
+		#region Create
+		// GET: Artist/Create
+		public ActionResult Create()
+		{
+			return PartialView();
+		}
 
-                return Json(new { resultado = false, message = erros });
-            }
-        }
-        #endregion
+		// POST: Artist/Create
+		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public JsonResult Create([Bind(Include = "Id,Name,BirthDate,AboutLink")] ArtistViewModel artist)
+		{
+			if (ModelState.IsValid)
+			{
+				var artistView = Mapper.Map<ArtistViewModel, Artist>(artist);
+				_unitOfWork.Artists.Add(artistView);
+				_unitOfWork.Complete();
+				return Json(new { resultado = true, message = "Artist successfully registered!" });
+			}
+			else
+			{
+				IEnumerable<ModelError> erros = ModelState.Values.SelectMany(item => item.Errors);
 
-        #region Detail
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var artist = _unitOfWork.Artists.GetById(id);
-            var artistView = Mapper.Map<Artist, ArtistViewModel>(artist);
+				return Json(new { resultado = false, message = erros });
+			}
+		}
+		#endregion
 
-            if (artist == null)
-            {
-                return HttpNotFound();
-            }
+		#region Detail
+		public ActionResult Details(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			var artist = _unitOfWork.Artists.GetById(id);
+			var artistView = Mapper.Map<Artist, ArtistViewModel>(artist);
 
-            return PartialView(artistView);
-        }
-        #endregion
+			if (artist == null)
+			{
+				return HttpNotFound();
+			}
 
-        #region Edit
-        // GET: Artist/Edit
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var artist = _unitOfWork.Artists.GetById(id);
-            var artistView = Mapper.Map<Artist, ArtistViewModel>(artist);
-            
-            if (artist == null)
-            {
-                return HttpNotFound();
-            }
-            return PartialView(artistView);
-        }
+			return PartialView(artistView);
+		}
+		#endregion
 
-        // POST: Livros/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public JsonResult Edit([Bind(Include = "Id,Name,BirthDate,AboutLink")] ArtistViewModel artistView)
-        {
-            if (ModelState.IsValid)
-            {
-                var artist = Mapper.Map<ArtistViewModel, Artist>(artistView);
-                _unitOfWork.Artists.Edit(artist);
-                _unitOfWork.Complete();
-                return Json(new { resultado = true, message = "Artist edited successfully!" });
-            }
-            else
-            {
-                IEnumerable<ModelError> erros = ModelState.Values.SelectMany(item => item.Errors);
+		#region Edit
+		// GET: Artist/Edit
+		public ActionResult Edit(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			var artist = _unitOfWork.Artists.GetById(id);
+			var artistView = Mapper.Map<Artist, ArtistViewModel>(artist);
 
-                return Json(new { resultado = false, message = erros });
-            }
-        }
+			if (artist == null)
+			{
+				return HttpNotFound();
+			}
+			return PartialView(artistView);
+		}
 
-        #endregion
+		// POST: Livros/Edit/5
+		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public JsonResult Edit([Bind(Include = "Id,Name,BirthDate,AboutLink")] ArtistViewModel artistView)
+		{
+			if (ModelState.IsValid)
+			{
+				var artist = Mapper.Map<ArtistViewModel, Artist>(artistView);
+				_unitOfWork.Artists.Edit(artist);
+				_unitOfWork.Complete();
+				return Json(new { resultado = true, message = "Artist edited successfully!" });
+			}
+			else
+			{
+				IEnumerable<ModelError> erros = ModelState.Values.SelectMany(item => item.Errors);
 
-        #region Delete
-        // GET: Artist/Delete
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var artist = _unitOfWork.Artists.GetById(id);
-            var artistView = Mapper.Map<Artist, ArtistViewModel>(artist);
-            if (artist == null)
-            {
-                return HttpNotFound();
-            }
-            return PartialView(artistView);
-        }
+				return Json(new { resultado = false, message = erros });
+			}
+		}
 
-        // POST: Livros/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public JsonResult DeleteConfirmed(int id)
-        {
-            try
-            {
-                Artist artist = _unitOfWork.Artists.Get(id); 
-                _unitOfWork.Artists.Remove(artist);
-                _unitOfWork.Complete();
-                return Json(new { resultado = true, message = "Successfully deleted artist!" });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { resultado = false, message = ex.Message });
-            }
-        }
-        #endregion
+		#endregion
 
-        // Simple test Json for PostMan
-        public JsonNetResult TestJsonPostmanReturn()
-        {
-            var dadosFiltrados = _unitOfWork.Artists.GetAll();
+		#region Delete
+		// GET: Artist/Delete
+		public ActionResult Delete(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			var artist = _unitOfWork.Artists.GetById(id);
+			var artistView = Mapper.Map<Artist, ArtistViewModel>(artist);
+			if (artist == null)
+			{
+				return HttpNotFound();
+			}
+			return PartialView(artistView);
+		}
 
-            return new JsonNetResult() { Data = dadosFiltrados };
-        }
+		// POST: Livros/Delete/5
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public JsonResult DeleteConfirmed(int id)
+		{
+			try
+			{
+				Artist artist = _unitOfWork.Artists.Get(id);
+				_unitOfWork.Artists.Remove(artist);
+				_unitOfWork.Complete();
+				return Json(new { resultado = true, message = "Successfully deleted artist!" });
+			}
+			catch (Exception ex)
+			{
+				return Json(new { resultado = false, message = ex.Message });
+			}
+		}
+		#endregion
 
-    }
+		// Simple test Json for PostMan
+		//[Authorize]
+		public JsonNetResult TestJsonPostmanReturn()
+		{
+			var dadosFiltrados = _unitOfWork.Artists.GetAll();
+
+			return new JsonNetResult() { Data = dadosFiltrados };
+		}
+
+	}
 }

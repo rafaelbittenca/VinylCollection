@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace Vinyl.UI.Controllers.Api
 {
 	[RoutePrefix("api/artist")]
-	[Authorize]
+	//[Authorize]
 	public class ArtistController : ApiController
 	{
 		private readonly IUnitOfWork _unitOfWork;
@@ -34,7 +34,7 @@ namespace Vinyl.UI.Controllers.Api
 		[HttpGet]
 		// "{id:int:min(1)} - Route Constraints
 		// Name ="GetArtistById" - Use Links routes
-		[Route("{id:int:min(1)}", Name = "GetArtistById")]
+		//[Route("{id:int:min(1)}", Name = "GetArtistById")]
 		//Override RoutePrefix
 		[Route("~/api/artist/{id}")]
 		public IHttpActionResult LoadArtistById(int id)
