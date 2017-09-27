@@ -34,7 +34,7 @@ namespace Vinyl.UI.Controllers.Api
 		[HttpGet]
 		// "{id:int:min(1)} - Route Constraints
 		// Name ="GetArtistById" - Use Links routes
-		[Route("{id:int)}", Name = "GetArtistById")]
+		//[Route("{id:int:min(1)}", Name = "GetArtistById")]
 		//Override RoutePrefix
 		[Route("~/api/artist/{id}")]
 		public IHttpActionResult LoadArtistById(int id)
