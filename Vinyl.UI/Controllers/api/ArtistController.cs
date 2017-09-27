@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace Vinyl.UI.Controllers.Api
 {
 	[RoutePrefix("api/artist")]
-	//[Authorize]
+	[Authorize]
 	public class ArtistController : ApiController
 	{
 		private readonly IUnitOfWork _unitOfWork;
@@ -26,7 +26,7 @@ namespace Vinyl.UI.Controllers.Api
 		[Route("~/api/artist")]
 		public IHttpActionResult LoadArtists()
 		{
-			var artists = _unitOfWork.Artists.GetAll();
+			var artists = _unitOfWork.Artists.GetAll().OrderBy(a => a.Name);
 			return Ok(artists);
 		}
 
