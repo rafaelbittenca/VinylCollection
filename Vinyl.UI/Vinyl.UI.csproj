@@ -310,6 +310,7 @@
     <Compile Include="Infra\ErrorResult.cs" />
     <Compile Include="Infra\JsonNetResult.cs" />
     <Compile Include="Infra\ParametrosPaginacaoModelBinder.cs" />
+    <Compile Include="Infra\ModelStateHelper.cs" />
     <Compile Include="Mappers\AutoMapperConfig.cs" />
     <Compile Include="Migrations\201709062352006_Initial.cs" />
     <Compile Include="Migrations\201709062352006_Initial.Designer.cs">

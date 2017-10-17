@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Vinyl.DAL.Contract;
 using Vinyl.Models;
@@ -13,6 +13,7 @@ using Vinyl.UI.ViewModels;
 
 namespace Vinyl.UI.Controllers
 {
+
 	public class ArtistController : Controller
 	{
 		private readonly IUnitOfWork _unitOfWork;
@@ -145,19 +146,16 @@ namespace Vinyl.UI.Controllers
 		[ValidateAntiForgeryToken]
 		public JsonResult Edit([Bind(Include = "Id,Name,BirthDate,AboutLink")] ArtistViewModel artistView)
 		{
-			if (ModelState.IsValid)
-			{
-				var artist = Mapper.Map<ArtistViewModel, Artist>(artistView);
-				_unitOfWork.Artists.Edit(artist);
-				_unitOfWork.Complete();
-				return Json(new { resultado = true, message = "Artist edited successfully!" });
-			}
-			else
-			{
-				IEnumerable<ModelError> erros = ModelState.Values.SelectMany(item => item.Errors);
 
-				return Json(new { resultado = false, message = erros });
+			if (!ModelState.IsValid)
+			{
+				return Json(new { resultado = false, message = ModelState.Errors() }, JsonRequestBehavior.AllowGet);
 			}
+
+			var artist = Mapper.Map<ArtistViewModel, Artist>(artistView);
+			_unitOfWork.Artists.Edit(artist);
+			_unitOfWork.Complete();
+			return Json(new { resultado = true, message = "Artist edited successfully!" });
 		}
 
 		#endregion

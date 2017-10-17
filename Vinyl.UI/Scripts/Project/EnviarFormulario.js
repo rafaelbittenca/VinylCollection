@@ -20,7 +20,7 @@ function submeter() {
 }
 
 function tratarRetorno(resultadoServidor) {
-
+    console.log(resultadoServidor.message);
     if (resultadoServidor.resultado) {
         toastr.options = {
             // toast-top-right / toast-top-left / toast-bottom-right / toast-bottom-left
@@ -32,7 +32,21 @@ function tratarRetorno(resultadoServidor) {
         $('#gridDados').bootgrid('reload');
     }
     else {
-        toastr['error'](resultadoServidor.message, msgErro);
+        //toastr['error'](resultadoServidor.message);
+        DisplayErrors(resultadoServidor.message);
         btnAcao.prop("disabled", false);
     }
+}
+
+function DisplayErrors(errors) {
+    console.log(errors);
+    toastr.options = {
+        "positionClass": "toast-top-center",
+        "showDuration": "300",
+    }
+    console.log("Length: " +errors.length);
+    for (var i = 0; i < errors.length; i++) {
+        toastr['error'](errors[i].Value[0]);
+    }
+    btnAcao.prop("disabled", false);
 }
