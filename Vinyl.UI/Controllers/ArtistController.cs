@@ -149,6 +149,7 @@ namespace Vinyl.UI.Controllers
 
 			if (!ModelState.IsValid)
 			{
+				//Return Error Validation to ajax request
 				return Json(new { resultado = false, message = ModelState.Errors() }, JsonRequestBehavior.AllowGet);
 			}
 

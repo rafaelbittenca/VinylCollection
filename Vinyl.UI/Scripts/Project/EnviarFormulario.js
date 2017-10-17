@@ -25,8 +25,8 @@ function tratarRetorno(resultadoServidor) {
         toastr.options = {
             // toast-top-right / toast-top-left / toast-bottom-right / toast-bottom-left
             "positionClass": "toast-top-center",
-            "showDuration": "300", // in milliseconds
-        }
+            "showDuration": "300" // in milliseconds
+        },
         toastr['success'](resultadoServidor.message);
         $('#myModal').modal('hide');
         $('#gridDados').bootgrid('reload');
@@ -42,8 +42,8 @@ function DisplayErrors(errors) {
     console.log(errors);
     toastr.options = {
         "positionClass": "toast-top-center",
-        "showDuration": "300",
-    }
+        "showDuration": "300"
+    },
     console.log("Length: " +errors.length);
     for (var i = 0; i < errors.length; i++) {
         toastr['error'](errors[i].Value[0]);
