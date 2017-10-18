@@ -7,6 +7,7 @@ using Vinyl.Models;
 using Vinyl.UI.ViewModels;
 using System.Linq;
 using System.Collections.Generic;
+using Vinyl.UI.Dtos;
 
 namespace Vinyl.UI.Controllers.Api
 {
@@ -22,27 +23,23 @@ namespace Vinyl.UI.Controllers.Api
 		}
 
 		[HttpGet]
-		//[Route("")]
 		[Route("~/api/artist")]
 		public IHttpActionResult LoadArtists()
 		{
-			var artists = _unitOfWork.Artists.GetAll();
+			var artists = _unitOfWork.Artists.GetAll().Select(Mapper.Map<Artist, ArtistDto>);
 			return Ok(artists);
 		}
 
 
 		[HttpGet]
-		// "{id:int:min(1)} - Route Constraints
-		// Name ="GetArtistById" - Use Links routes
-		//[Route("{id:int:min(1)}", Name = "GetArtistById")]
-		//Override RoutePrefix
+		[Route("{id:int}")]
 		[Route("~/api/artist/{id}")]
 		public IHttpActionResult LoadArtistById(int id)
 		{
 			var artist = _unitOfWork.Artists.GetById(id);
 			if (artist != null)
 			{
-				return Ok(artist);
+				return Ok(Mapper.Map<Artist,ArtistDto>(artist));
 			}
 			else
 			{
@@ -51,12 +48,11 @@ namespace Vinyl.UI.Controllers.Api
 		}
 
 		[HttpGet]
-		//Route Constraints
 		[Route("{name:alpha}")]
 		[Route("~/api/artist/{name}")]
 		public IHttpActionResult LoadArtistsByName(string name)
 		{
-			var artists = _unitOfWork.Artists.Find(a => a.Name.ToLower().Contains(name.ToLower()));
+			var artists = _unitOfWork.Artists.Find(a => a.Name.ToLower().Contains(name.ToLower())).Select(Mapper.Map<Artist, ArtistDto>); 
 			if (artists.ToList().Count() > 0)
 			{
 				return Ok(artists);
@@ -69,16 +65,17 @@ namespace Vinyl.UI.Controllers.Api
 
 		[HttpPost]
 		[Route("")]
-		public IHttpActionResult CreateArtist([FromBody] Artist artist)
+		public IHttpActionResult CreateArtist([FromBody] ArtistDto artistDto)
 		{
 			try
 			{
 				if (!ModelState.IsValid)
 					return BadRequest();
+				var artist = Mapper.Map<ArtistDto, Artist>(artistDto);
 				_unitOfWork.Artists.Add(artist);
 				_unitOfWork.Complete();
-				return Created(new Uri(Request.RequestUri + "/" + artist.ID), artist);
-
+				artistDto.Id = artist.ID;
+				return Created(new Uri(Request.RequestUri + "/" + artistDto.Id), artistDto);
 			}
 			catch (Exception ex)
 			{
@@ -86,11 +83,10 @@ namespace Vinyl.UI.Controllers.Api
 			}
 		}
 
-
-		// PUT /api/customers/1
 		[HttpPut]
-		[Route("{id}")]
-		public IHttpActionResult UpdateArtist(int id, ArtistViewModel artistView)
+		[Route("{id:int}")]
+		[Route("~/api/artist/{id}")]
+		public IHttpActionResult UpdateArtist(int id, ArtistDto artistDto)
 		{
 			try
 			{
@@ -101,14 +97,9 @@ namespace Vinyl.UI.Controllers.Api
 				if (artistInDb == null)
 					return Content(HttpStatusCode.NotFound, string.Format("Artist with Id: {0} could not be found", id));
 
-				//Mapper.Map(artistInDb, artistView);
-				Mapper.Map<ArtistViewModel, Artist>(artistView);
-				// Now we merge the view model properties into the model
-				var artist = Mapper.Map(artistView, artistInDb);
-				artist.ID = id;
-				
+				Mapper.Map(artistDto, artistInDb);
+
 				//Save
-				_unitOfWork.Artists.Edit(artist);
 				_unitOfWork.Complete();
 
 				return Ok();
@@ -130,6 +121,8 @@ namespace Vinyl.UI.Controllers.Api
 
 				if (artistInDb == null)
 					return Content(HttpStatusCode.NotFound, string.Format("Artist with Id: {0} could not be found", id));
+
+				var artist = Mapper.Map<Artist, ArtistDto>(artistInDb);
 
 				_unitOfWork.Artists.Remove(artistInDb);
 				_unitOfWork.Complete();

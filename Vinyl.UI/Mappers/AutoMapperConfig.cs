@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Vinyl.Models;
+using Vinyl.UI.Dtos;
 using Vinyl.UI.ViewModels;
 
 namespace Vinyl.UI.Mappers
@@ -15,9 +16,12 @@ namespace Vinyl.UI.Mappers
             Mapper.Initialize(
             config =>
             {
-                 config.CreateMap<Artist, ArtistViewModel>();
-                 config.CreateMap<ArtistViewModel, Artist>();
-            });
+		      config.CreateMap<Artist, ArtistViewModel>();
+	            config.CreateMap<ArtistViewModel, Artist>();
+
+			config.CreateMap<Artist, ArtistDto>();
+			config.CreateMap<ArtistDto, Artist>();
+		});
         }
     }
 }
