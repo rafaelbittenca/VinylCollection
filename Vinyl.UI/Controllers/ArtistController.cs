@@ -74,6 +74,7 @@ namespace Vinyl.UI.Controllers
 
 		#region Create
 		// GET: Artist/Create
+		[Authorize]
 		public ActionResult Create()
 		{
 			return PartialView();
@@ -82,6 +83,7 @@ namespace Vinyl.UI.Controllers
 		// POST: Artist/Create
 		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[Authorize]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public JsonResult Create([Bind(Include = "Id,Name,BirthDate,AboutLink")] ArtistViewModel artist)
@@ -122,6 +124,7 @@ namespace Vinyl.UI.Controllers
 		#endregion
 
 		#region Edit
+		[Authorize]
 		// GET: Artist/Edit
 		public ActionResult Edit(int? id)
 		{
@@ -142,6 +145,7 @@ namespace Vinyl.UI.Controllers
 		// POST: Livros/Edit/5
 		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[Authorize]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public JsonResult Edit([Bind(Include = "Id,Name,BirthDate,AboutLink")] ArtistViewModel artistView)
@@ -163,6 +167,7 @@ namespace Vinyl.UI.Controllers
 
 		#region Delete
 		// GET: Artist/Delete
+		[Authorize]
 		public ActionResult Delete(int? id)
 		{
 			if (id == null)
@@ -179,6 +184,7 @@ namespace Vinyl.UI.Controllers
 		}
 
 		// POST: Livros/Delete/5
+		[Authorize]
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
 		public JsonResult DeleteConfirmed(int id)

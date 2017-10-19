@@ -30,7 +30,6 @@ namespace Vinyl.UI.Controllers.Api
 			return Ok(artists);
 		}
 
-
 		[HttpGet]
 		[Route("{id:int}")]
 		[Route("~/api/artist/{id}")]
@@ -71,11 +70,14 @@ namespace Vinyl.UI.Controllers.Api
 			{
 				if (!ModelState.IsValid)
 					return BadRequest();
+
 				var artist = Mapper.Map<ArtistDto, Artist>(artistDto);
 				_unitOfWork.Artists.Add(artist);
 				_unitOfWork.Complete();
+
 				artistDto.Id = artist.ID;
-				return Created(new Uri(Request.RequestUri + "/" + artistDto.Id), artistDto);
+
+				return Created(new Uri(Request.RequestUri + "/" + artist.ID), artistDto);
 			}
 			catch (Exception ex)
 			{
