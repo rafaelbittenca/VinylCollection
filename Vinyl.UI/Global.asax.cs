@@ -32,8 +32,6 @@ namespace Vinyl.UI
 
 			//ModelBinder
 			ModelBinders.Binders.Add(typeof(ParametrosPaginacao), new ParametrosPaginacaoModelBinder());
-			//ModelBinders.Binders.Add(typeof(DateTime?), new DateTimeModelBinder());
-			//ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder());
 
 			//Autofac Configuration
 			var builder = new Autofac.ContainerBuilder();

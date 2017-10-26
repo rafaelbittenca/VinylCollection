@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using Vinyl.Libraries.Tools;
 using Vinyl.UI.ViewModels;
-using System.Web.Configuration;
 
 namespace Vinyl.UI.Controllers
 {
-    public class HomeController : Controller
+	public class HomeController : Controller
     {
         public ActionResult Index()
         {
