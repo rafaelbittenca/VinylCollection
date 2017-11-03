@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vinyl.DAL", "Vinyl.DAL\Viny
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vinyl.Libraries", "Vinyl.Libraries\Vinyl.Libraries.csproj", "{5828045A-8190-4853-A7BF-3C457C01CF9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vinyl.Test", "Vinyl.Test\Vinyl.Test.csproj", "{442CA2BF-87BC-4227-B6C3-1C25DE019507}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5828045A-8190-4853-A7BF-3C457C01CF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5828045A-8190-4853-A7BF-3C457C01CF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5828045A-8190-4853-A7BF-3C457C01CF9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{442CA2BF-87BC-4227-B6C3-1C25DE019507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442CA2BF-87BC-4227-B6C3-1C25DE019507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442CA2BF-87BC-4227-B6C3-1C25DE019507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442CA2BF-87BC-4227-B6C3-1C25DE019507}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

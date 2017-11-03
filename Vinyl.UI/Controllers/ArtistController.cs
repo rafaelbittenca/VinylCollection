@@ -60,7 +60,7 @@ namespace Vinyl.UI.Controllers
 			}
 
 			var artistsFiltered = artists.OrderBy(parametrosPaginacao.CampoOrdenado)
-							     .Skip((parametrosPaginacao.Current - 1) * parametrosPaginacao.RowCount)
+							     .Skip((parametrosPaginacao.Current - 1) *     parametrosPaginacao.RowCount)
 							     .Take(parametrosPaginacao.RowCount).ToList();
 
 			DadosFiltrados dadosFiltrados = new DadosFiltrados(parametrosPaginacao)

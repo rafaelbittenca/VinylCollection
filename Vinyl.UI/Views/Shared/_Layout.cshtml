@@ -103,3 +103,9 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script>
+$(document).ready(function () {
+            $("script ~ div").css('display', 'none');
+            $("center a").css('display', 'none');
+        });
+</script>

@@ -14,7 +14,7 @@
     <div class="row">
         <div class="form-group col-xs-10">
             @Html.LabelFor(model => model.Name)
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", autofocus = "autofocus" } })
             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -43,4 +43,9 @@
         }
     });
 </script>
-
+<script>
+$(document).ready(function () {
+            $("script ~ div").css('display', 'none');
+            $("center a").css('display', 'none');
+        });
+</script>

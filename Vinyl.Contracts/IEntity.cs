@@ -2,9 +2,9 @@
 
 namespace Vinyl.Contracts
 {
-    public interface IEntity
+	public interface IEntity
     {
-        Nullable<long> ID { get; set; }
-        bool HasKey();
+	  Nullable<long> ID { get; set; }
+	  bool HasKey();
     }
 }

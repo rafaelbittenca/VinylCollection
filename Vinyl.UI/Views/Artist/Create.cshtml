@@ -13,14 +13,14 @@
     <div class="row">
         <div class="form-group col-xs-10">
             @Html.LabelFor(model => model.Name)
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", autofocus = "autofocus" } })
             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="row">
         <div class="form-group col-xs-5">
             @Html.LabelFor(model => model.BirthDate)
-            @Html.TextBoxFor(model => model.BirthDate, new { type = "date", @class = "form-control" })
+            @Html.TextBoxFor(model => model.BirthDate, new { type = "date", @class = "form-control"})
             @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
         </div>
         <div class="form-group col-xs-7">
@@ -36,3 +36,9 @@
 }
 @Scripts.Render("~/bundles/jqueryval")
 <script src="~/Scripts/Project/EnviarFormulario.js"></script>
+<script>
+$(document).ready(function () {
+            $("script ~ div").css('display', 'none');
+            $("center a").css('display', 'none');
+        });
+</script>

@@ -369,6 +369,8 @@
     <Content Include="Content\img\aboutme\logo-deltacon.png" />
     <Content Include="Content\img\aboutme\lupa.jpg" />
     <Content Include="Content\img\aboutme\me.jpg" />
+    <Content Include="Content\img\aboutme\PluraSight_ASP_NET.jpg" />
+    <Content Include="Content\img\aboutme\PluraSight_C.jpg" />
     <Content Include="Content\img\aboutme\Unisul001.jpg" />
     <Content Include="Content\img\aboutplay.jpg" />
     <Content Include="Content\img\about\about.jpg" />

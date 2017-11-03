@@ -36,3 +36,9 @@
 </div>
 @Scripts.Render("~/bundles/jqueryval")
 <script src="~/Scripts/Project/EnviarFormulario.js"></script>
+<script>
+$(document).ready(function () {
+            $("script ~ div").css('display', 'none');
+            $("center a").css('display', 'none');
+        });
+</script>
