@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using System;
+using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Vinyl.DAL.Contract;
 using Vinyl.Models;
-using Vinyl.UI.ViewModels;
-using System.Linq;
-using System.Collections.Generic;
 using Vinyl.UI.Dtos;
 
 namespace Vinyl.UI.Controllers.Api
@@ -24,18 +23,18 @@ namespace Vinyl.UI.Controllers.Api
 
 		[HttpGet]
 		[Route("~/api/artist")]
-		public IHttpActionResult LoadArtists()
+		public async Task<IHttpActionResult> LoadArtists()
 		{
-			var artists = _unitOfWork.Artists.GetAll().Select(Mapper.Map<Artist, ArtistDto>);
-			return Ok(artists);
+			var artists = await _unitOfWork.Artists.GetAllAsync();
+			return Ok(artists.Select(Mapper.Map<Artist, ArtistDto>));
 		}
 
 		[HttpGet]
 		[Route("{id:int}")]
 		[Route("~/api/artist/{id}")]
-		public IHttpActionResult LoadArtistById(int id)
+		public async Task<IHttpActionResult> LoadArtistById(int id)
 		{
-			var artist = _unitOfWork.Artists.GetById(id);
+			var artist = await _unitOfWork.Artists.GetByIdAsync(id);
 			if (artist != null)
 			{
 				return Ok(Mapper.Map<Artist,ArtistDto>(artist));
@@ -49,12 +48,15 @@ namespace Vinyl.UI.Controllers.Api
 		[HttpGet]
 		[Route("{name:alpha}")]
 		[Route("~/api/artist/{name}")]
-		public IHttpActionResult LoadArtistsByName(string name)
+		public async Task<IHttpActionResult> LoadArtistsByName(string name)
 		{
-			var artists = _unitOfWork.Artists.Find(a => a.Name.ToLower().Contains(name.ToLower())).Select(Mapper.Map<Artist, ArtistDto>); 
+			var artists = await _unitOfWork.Artists
+								 .FindAsync(a => a.Name.ToLower()
+								                       .Contains(name.ToLower()));
+								        
 			if (artists.ToList().Count() > 0)
 			{
-				return Ok(artists);
+				return Ok(artists.Select(Mapper.Map<Artist, ArtistDto>));
 			}
 			else
 			{
@@ -88,14 +90,14 @@ namespace Vinyl.UI.Controllers.Api
 		[HttpPut]
 		[Route("{id:int}")]
 		[Route("~/api/artist/{id}")]
-		public IHttpActionResult UpdateArtist(int id, ArtistDto artistDto)
+		public async Task<IHttpActionResult> UpdateArtist(int id, ArtistDto artistDto)
 		{
 			try
 			{
 				if (!ModelState.IsValid)
 					return BadRequest();
 
-				var artistInDb = _unitOfWork.Artists.GetById(id);
+				var artistInDb = await _unitOfWork.Artists.GetByIdAsync(id);
 				if (artistInDb == null)
 					return Content(HttpStatusCode.NotFound, string.Format("Artist with Id: {0} could not be found", id));
 
@@ -115,11 +117,11 @@ namespace Vinyl.UI.Controllers.Api
 		// DELETE /api/customers/1
 		[HttpDelete]
 		[Route("{id}")]
-		public IHttpActionResult DeleteArtist(int id)
+		public async Task<IHttpActionResult> DeleteArtist(int id)
 		{
 			try
 			{
-				var artistInDb = _unitOfWork.Artists.GetById(id);
+				var artistInDb = await _unitOfWork.Artists.GetByIdAsync(id);
 
 				if (artistInDb == null)
 					return Content(HttpStatusCode.NotFound, string.Format("Artist with Id: {0} could not be found", id));

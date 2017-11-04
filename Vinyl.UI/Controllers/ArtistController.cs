@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Vinyl.DAL.Contract;
 using Vinyl.Models;
@@ -39,17 +39,17 @@ namespace Vinyl.UI.Controllers
 			return View("Index");
 		}
 
-		public JsonResult Listar(ParametrosPaginacao parametrosPaginacao)
+		public async Task<JsonResult> Listar(ParametrosPaginacao parametrosPaginacao)
 		{
-			DadosFiltrados dadosFiltrados = FiltrarEPaginar(parametrosPaginacao);
+			DadosFiltrados dadosFiltrados = await FiltrarEPaginar(parametrosPaginacao);
 
 			return Json(dadosFiltrados, JsonRequestBehavior.AllowGet);
 		}
 
-		private DadosFiltrados FiltrarEPaginar(ParametrosPaginacao parametrosPaginacao)
+		private async Task<DadosFiltrados> FiltrarEPaginar(ParametrosPaginacao parametrosPaginacao)
 		{
 
-			var artists = _unitOfWork.Artists.GetAll();
+			var artists = await _unitOfWork.Artists.GetAllAsync();
 
 			int total = artists.Count();
 
@@ -60,8 +60,9 @@ namespace Vinyl.UI.Controllers
 			}
 
 			var artistsFiltered = artists.OrderBy(parametrosPaginacao.CampoOrdenado)
-							     .Skip((parametrosPaginacao.Current - 1) *     parametrosPaginacao.RowCount)
-							     .Take(parametrosPaginacao.RowCount).ToList();
+							     .Skip((parametrosPaginacao.Current - 1) *								  parametrosPaginacao.RowCount)
+							     .Take(parametrosPaginacao.RowCount)
+							     .ToList();
 
 			DadosFiltrados dadosFiltrados = new DadosFiltrados(parametrosPaginacao)
 			{
@@ -105,13 +106,13 @@ namespace Vinyl.UI.Controllers
 		#endregion
 
 		#region Detail
-		public ActionResult Details(int? id)
+		public async Task<ActionResult> Details(int? id)
 		{
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-			var artist = _unitOfWork.Artists.GetById(id);
+			var artist = await _unitOfWork.Artists.GetByIdAsync(id);
 			var artistView = Mapper.Map<Artist, ArtistViewModel>(artist);
 
 			if (artist == null)
@@ -126,13 +127,13 @@ namespace Vinyl.UI.Controllers
 		#region Edit
 		[Authorize]
 		// GET: Artist/Edit
-		public ActionResult Edit(int? id)
+		public async Task<ActionResult> Edit(int? id)
 		{
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-			var artist = _unitOfWork.Artists.GetById(id);
+			var artist = await _unitOfWork.Artists.GetByIdAsync(id);
 			var artistView = Mapper.Map<Artist, ArtistViewModel>(artist);
 
 			if (artist == null)
@@ -168,13 +169,13 @@ namespace Vinyl.UI.Controllers
 		#region Delete
 		// GET: Artist/Delete
 		[Authorize]
-		public ActionResult Delete(int? id)
+		public async Task<ActionResult> Delete(int? id)
 		{
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-			var artist = _unitOfWork.Artists.GetById(id);
+			var artist = await _unitOfWork.Artists.GetByIdAsync(id);
 			var artistView = Mapper.Map<Artist, ArtistViewModel>(artist);
 			if (artist == null)
 			{
@@ -187,11 +188,11 @@ namespace Vinyl.UI.Controllers
 		[Authorize]
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
-		public JsonResult DeleteConfirmed(int id)
+		public async Task<JsonResult> DeleteConfirmed(int id)
 		{
 			try
 			{
-				Artist artist = _unitOfWork.Artists.Get(id);
+				Artist artist = await _unitOfWork.Artists.GetAsync(id);
 				_unitOfWork.Artists.Remove(artist);
 				_unitOfWork.Complete();
 				return Json(new { resultado = true, message = "Successfully deleted artist!" });

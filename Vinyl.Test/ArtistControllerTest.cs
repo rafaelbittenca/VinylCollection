@@ -15,10 +15,10 @@ namespace Vinyl.Test
 		public void TestMethod1()
 		{
 			var artists = new List<Artist>();
-			artists.Add(new Artist {
-				ID=1,
-				Name="John NoName"
-			});
+			//artists.Add(new Artist {
+			//	ID=1,
+			//	Name="John NoName"
+			//});
 			Mock<IUnitOfWork> mockRepo = new Mock<IUnitOfWork>();
 			mockRepo.Setup(x => x.Artists.GetAll()).Returns(artists);
 			var artistController = new ArtistController(mockRepo.Object);
