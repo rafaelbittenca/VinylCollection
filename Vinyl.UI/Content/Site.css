@@ -210,10 +210,7 @@ img::-moz-selection {
 	color: #6207e3;
 }
 
-#map{
-	  height:400px;
-	  width:100%;
-}
+
 
 .section-title {
 	font-size: 32px;
@@ -258,19 +255,6 @@ img::-moz-selection {
 	border-radius: 100%;
 	border: 7px solid #f1f1f1;
 	text-align: center;
-}
-
-#page-more {
-	height:400px;
-	width:100%;
-	background-image:url('img/floripa.jpg');
-	opacity:0.80;
-	min-height:400px;
-	position:relative;
-	background-position:center;
-	background-size:cover;
-	background-repeat:no-repeat;
-	background-attachment:fixed;
 }
 
 .more-text {
@@ -449,14 +433,34 @@ img::-moz-selection {
   }
 }
 
+#map {
+    height:400px;
+	width:100%;
+}
+
+#page-more {
+	height:400px;
+	width:100%;
+	background-image:url('img/floripa.jpg');
+	opacity:0.80;
+	min-height:400px;
+	position:relative;
+	background-position:center;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+}
+
 #about-me {
   padding: 70px 0 70px 0;
 }
+
 #about-me h2.section-heading {
   font-size: 40px;
   margin-top: 0;
   margin-bottom: 15px;
 }
+
 #about-me h3.section-subheading {
   font-size: 16px;
   font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -481,3 +485,7 @@ img::-moz-selection {
   }
 }
 
+#page-records {
+    padding: 120px 0 0 0;
+    
+}

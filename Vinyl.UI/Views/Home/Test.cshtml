@@ -1,0 +1,45 @@
+﻿<body>
+    <br /><br /><br /><br />
+    <div>
+        Heloo!!
+    </div>
+    <div>
+        <input type="button" value="Find" class="btn btn-primary btn-lg" id="btn" />
+        <p id="tblData"></p>
+    </div>
+</body> 
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script>
+    $('#btn').click(function () {
+        getData("http://localhost:55695/api/artist/");
+    });
+
+    function getData(urlRequest) {
+        $.ajax({
+
+            type: 'GET',
+            url: urlRequest,
+            dataType: 'jsonp',
+
+
+            success: function (data) {
+                console.log(data);
+                $.each(data, function (index, value) {
+                    var row = $('<tr><td>' + value.id + '</td><td>'
+                        + value.name + '</td><td>'
+                        + value.aboutLink + '</td></tr>');
+                    $('#tblData').append(row);
+                });
+            },
+
+            complete: function (jqXHR) {
+                console.log(jqXHR.status);
+                if (jqXHR.status === '401') {
+                    ulArtits.empty();
+                    ulArtits.append('<li style="color:red">'
+                        + jqXHR.status + ' : ' + jqXHR.statusText + '</li>');
+                }
+            }
+        });
+    }
+</script>

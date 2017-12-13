@@ -4,10 +4,10 @@
 <!--Navbar Custom for child pages -->
 <link href="~/Content/navbar-custom.css" rel="stylesheet" />
 
-<hr /><hr /><hr />
+@*<hr /><hr /><hr />*@
 <section id="page-records" class="content">
     <div class="container">
-        <br /><br /><br /><br />
+        @*<br /><br /><br /><br />*@
         <!-- Working On It -->
         <div class="row text-center">
             <div class="col-md-12">
@@ -18,7 +18,7 @@
                     <h4 class="about-label">Vinyl Collection</h4>
                     <ul class="list-inline social-buttons">
                         <li class="item-rede-social">
-                            <a target="_blank" href="https://github.com/rafaelbittenca/Vinyl">
+                            <a target="_blank" href="https://github.com/rafaelbittenca/VinylCollection">
                                 <img class="social-media" src="~/Content/img/about/github.png" />
                             </a>
                         </li>
@@ -53,7 +53,6 @@
         }
     </div>
 </section>
-
 <script>
     document.getElementById("link-about").href = "@Url.Action("Index", "Home")#page-about";
     document.getElementById("link-contact").href = "@Url.Action("Index", "Home")#page-contact";

@@ -578,6 +578,7 @@
     <Content Include="Views\Artist\Edit.cshtml" />
     <Content Include="Views\Artist\Index.cshtml" />
     <Content Include="Views\Record\Index.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
