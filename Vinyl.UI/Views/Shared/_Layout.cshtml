@@ -11,7 +11,7 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("estilos", false)
@@ -86,7 +86,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <span class="copyright">&copy; Vinyl Collection 2017. All rights reserved. Theme by <a href="https://startbootstrap.com/template-overviews/agency/">agency</a></span>
+                    <span class="copyright">&copy; Rafael Bittencourt 2017. All rights reserved. Theme by <a href="https://startbootstrap.com/template-overviews/agency/">agency</a></span>
                 </div>
             </div>
         </div>
@@ -103,9 +103,4 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-<script>
-$(document).ready(function () {
-            $("script ~ div").css('display', 'none');
-            $("center a").css('display', 'none');
-        });
-</script>
+<script src="~/Scripts/removeserverbanner.js"></script>
