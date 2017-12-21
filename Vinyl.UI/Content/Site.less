@@ -1,0 +1,337 @@
+﻿@import "colors";
+@import "fonts";
+
+html, body, header {
+	height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.content {
+	 min-height: 100%;
+}
+
+footer {
+	background-color: @background-color;
+	padding: 10px 0;
+}
+
+/**********************************carousel**************************************************/
+.carousel {
+	background: @background-color; 
+	margin-top: 0px;
+    .item {
+	    min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
+        img {
+	        margin: 0 auto; /* Align slide image horizontally center */
+        }
+    }
+}
+
+/**********************************NavBar**************************************************/
+.navbar-custom {
+    background-color: @background-color;
+    border-color: transparent;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    .navbar-brand {
+        color: @main-color;
+        font-family: @special-font;
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+            color: @main-color;
+        }
+        @media (min-width: 768px) {
+            font-size: 2em;
+	        -webkit-transition: all 0.3s;
+	        -moz-transition: all 0.3s;
+	        transition: all 0.3s;
+        }
+    }
+    .navbar-collapse {
+        border-color: rgba(255, 255, 255, 0.02);
+    }
+    .navbar-toggle {
+        background-color: @main-color;
+        border-color: @main-color;
+        text-transform: uppercase;
+        color: white;
+        font-size: 12px;
+        &:hover,
+        &:focus {
+            background-color: @main-color;
+        }
+    }
+    .nav li a {
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 1px;
+        color: white;
+        &:hover,
+        &:focus {
+            color: @main-color;
+            outline: none;
+        }
+    }
+    .navbar-nav > .active > a {
+        border-radius: 0;
+        color: white;
+        background-color: @main-color;
+        &:hover,
+        &:focus {
+            color: white;
+            background-color: @main-color;
+        }
+        @media (min-width: 768px) {
+            border-radius: 3px;
+        }
+    }
+    @media (min-width: 768px) {
+	    background-color: transparent;
+	    padding: 10px 0;
+	    -webkit-transition: padding 0.3s;
+	    -moz-transition: padding 0.3s;
+	    transition: padding 0.3s;
+	    border: none;
+    }
+}
+
+@media (min-width: 768px) {
+  .navbar-custom.affix {
+	background-color: @background-color;
+	padding: 10px 0;
+  }
+  .navbar-custom.affix .navbar-brand {
+	font-size: 1.5em;
+  }
+}
+
+::-moz-selection {
+  text-shadow: none;
+  background: @main-color;
+}
+::selection {
+  text-shadow: none;
+  background: @main-color;
+}
+img::selection {
+  background: transparent;
+}
+img::-moz-selection {
+  background: transparent;
+}
+/**********************************header**************************************************/
+header {
+  background-image: url('img/bg-header.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  /*-webkit-background-size: cover;
+  -moz-background-size: cover;*/
+  background-size: cover;
+  /*-o-background-size: cover;*/
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: white;
+  .intro-text {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    @media (min-width: 768px) {
+        padding-top: 300px;
+	    padding-bottom: 200px;
+    }
+    .intro-lead-in {
+        font-style: italic;
+        font-size: 22px;
+        line-height: 22px;
+        margin-bottom: 25px;
+        @media (min-width: 768px) {
+            font-style: italic;
+	        font-size: 40px;
+	        line-height: 40px;
+	        margin-bottom: 25px;
+        }
+    }
+  }
+}
+.header-text {
+    position: absolute;
+    top: 10%;
+    left: 1.8%;
+    right: auto;
+    width: 96.66666666666666%;
+    color: #fff;
+}
+/**********************************buttons**************************************************/
+.btn-custom {
+	color: white;
+	border-radius: 500px;
+	-webkit-border-radius: 500px;
+	-moz-border-radius: 500px;
+	padding: 15px 95px;
+	margin: 0px 15px;
+	text-transform: uppercase;
+	transition: background 0.4s, color 0.4s;
+}
+.btn-laranja {
+	background: @main-color;
+    color: white;
+    &:hover {
+	    background-color: @button-hover;
+	    color: white;
+    }
+}
+/**********************************general**************************************************/
+.section-title {
+	font-size: 32px;
+	color: @background-color;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: 700;
+	margin-bottom: 10px;
+	font-family: @special-font;
+}
+
+.section-title-divider {
+	width: 80px;
+	height: 3px;
+	background: #03C4EB;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.about-label {
+	font-family: @special-font;
+	color: @main-color;
+}
+
+.img-circle {
+	border-radius: 50%;
+}
+
+.timeline-image {
+	left: 0;
+	margin-left: 0;
+	width: 100px;
+	height: 100px;
+	/*position: absolute;
+	z-index: 100;*/
+	background-color: @main-color;
+	color: #fff;
+	border-radius: 100%;
+	border: 7px solid #f1f1f1;
+	text-align: center;
+}
+
+.control-label {
+	font-family: @special-font;
+}
+
+.more-text {
+	color: white;
+	font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: italic;
+	font-size: 22px;
+}
+
+#about-me {
+  padding: 70px 0 70px 0;
+  h2.section-heading {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  h3.section-subheading {
+    font-size: 16px;
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: none;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 75px;
+  }
+  @media (min-width: 768px) {
+	padding: 120px 0 60px 0;
+  }
+}
+
+.fa-social {
+    padding: 5px;
+    font-size: 55px;
+    color: @background-color;
+    &:hover {
+        color: @main-color;
+        text-decoration: none;
+    }
+    &:focus {
+        color: @background-color;
+        text-decoration: none;
+    }
+    @media (max-width: 900px) {
+        font-size: 50px;
+        padding: 10px;
+    }
+}
+
+.item-rede-social{
+	float: none;
+}
+
+.social-media {
+	width: 40px;
+	height: 40px;
+}
+
+.copyright {
+	color: #9f9a9a;
+    a {
+	    color: #9f9a9a;
+	    text-decoration: none;
+        &:hover {
+	        color: @button-hover;
+        }
+    }
+}
+
+/**********************************SectionID**************************************************/
+#page-about{
+    padding: 30px 0;
+}
+
+#page-more {
+	height:500px;
+    padding-top: 50px;
+	width:100%;
+	background-image:url('img/floripa.jpg');
+	opacity:0.80;
+	min-height:400px;
+	position:relative;
+	background-position:center;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+}
+
+#map {
+    height:400px;
+	width:100%;
+}
+
+#login-page {
+  padding: 70px 0 70px 0;
+  @media (min-width: 768px) {
+	padding: 120px 0 150px 0;
+  }
+}
+
+#page-records {
+    padding: 120px 0 0 0;
+    
+}
+
+#page-contact {
+  padding: 30px 0;
+}
