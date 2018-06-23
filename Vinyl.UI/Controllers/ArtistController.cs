@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Net;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using Vinyl.DAL.Contract;
 using Vinyl.Models;
@@ -103,6 +105,48 @@ namespace Vinyl.UI.Controllers
 				return Json(new { resultado = false, message = erros });
 			}
 		}
+
+
+
+		// GET: Artist/Save
+		[Authorize]
+		public ActionResult Save()
+		{
+			return View();
+		}
+
+		// POST: Artist/Create
+		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[Authorize]
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Save(ArtistViewModel artist, HttpPostedFileBase upload)
+		{
+			if (ModelState.IsValid)
+			{
+				// Read the image data into a byte array
+				if (upload != null)
+				{
+					var imageContent = new byte[upload.ContentLength];
+					upload.InputStream.Read(imageContent, 0, imageContent.Length);
+					artist.Picture = imageContent;
+				}
+
+				var artistView = Mapper.Map<ArtistViewModel, Artist>(artist);
+				_unitOfWork.Artists.Add(artistView);
+				_unitOfWork.Complete();
+				//return Json(new { resultado = true, message = "Artist successfully registered!" });
+				return RedirectToAction("FullAccess");
+			}
+			else
+			{
+				IEnumerable<ModelError> erros = ModelState.Values.SelectMany(item => item.Errors);
+
+				//return Json(new { resultado = false, message = erros });
+				return View(artist);
+			}
+		}
 		#endregion
 
 		#region Detail
@@ -149,7 +193,7 @@ namespace Vinyl.UI.Controllers
 		[Authorize]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public JsonResult Edit([Bind(Include = "Id,Name,BirthDate,AboutLink")] ArtistViewModel artistView)
+		public JsonResult Edit(ArtistViewModel artistView)
 		{
 
 			if (!ModelState.IsValid)

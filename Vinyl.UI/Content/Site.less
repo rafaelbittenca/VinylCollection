@@ -19,6 +19,30 @@ footer {
 	padding: 10px 0;
 }
 
+/********************************************************************************************/
+
+/*html, header {
+	height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.content {
+	 min-height: 100%;
+}
+
+footer {
+  background-color: @background-color;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}*/
 /**********************************carousel**************************************************/
 .carousel {
 	background: @background-color; 
@@ -185,6 +209,16 @@ header {
 	    color: white;
     }
 }
+
+.btn-file {
+	background: #337ab7;
+    color: white;
+    &:hover {
+	    background-color: #337ab7;
+	    color: white;
+    }
+}
+
 /**********************************general**************************************************/
 .section-title {
 	font-size: 32px;
@@ -211,6 +245,20 @@ header {
 
 .img-circle {
 	border-radius: 50%;
+}
+
+.artist-image {
+	left: 0;
+	margin-left: 0;
+	width: 120px;
+	height: 120px;
+	/*position: absolute;
+	z-index: 100;*/
+	background-color: @main-color;
+	color: #fff;
+	border-radius: 100%;
+	border: 7px solid #f1f1f1;
+	text-align: center;
 }
 
 .timeline-image {
@@ -301,6 +349,10 @@ header {
     padding: 30px 0;
 }
 
+#page-newartist {
+    padding: 30px 70px;
+}
+
 #page-more {
 	height:500px;
     padding-top: 50px;
@@ -335,3 +387,8 @@ header {
 #page-contact {
   padding: 30px 0;
 }
+
+/*#create-artist {
+    margin: 160px auto 0px auto;
+    max-width: 800px;
+}*/

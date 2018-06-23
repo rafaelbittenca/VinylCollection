@@ -23,7 +23,9 @@ namespace Vinyl.UI.ViewModels
 
         [Display(Name = "About Link (E.g. Wikipedia, Artist WebPage)")]
         public string AboutLink { get; set; }
-        public byte[] Picture { get; set; }
+
+		//[DataType(DataType.Upload)]
+		public byte[] Picture { get; set; }
 
     }
 }

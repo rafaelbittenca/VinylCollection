@@ -11,6 +11,17 @@
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Picture)
+    <div class="row text-center">
+        @{
+            if (Model.Picture.LongLength > 0)
+            {
+                string imageBase64 = Convert.ToBase64String(Model.Picture);
+                string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                <img class="artist-image" src="@imageSrc" name="upload"/>
+}
+        }
+    </div>
     <div class="row">
         <div class="form-group col-xs-10">
             @Html.LabelFor(model => model.Name)

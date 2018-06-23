@@ -10,7 +10,8 @@
         <p>
             @{ if (ViewBag.ReadOnly == "NO")
                   {
-                        <a href="#" class="btn btn-success" data-action="Create">
+                        @*<a href="#" class="btn btn-success" data-action="Create">*@
+                        <a href="@Url.Action("Save", "Artist")" class="btn btn-success" data-action="Create">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             New Artist
                         </a>

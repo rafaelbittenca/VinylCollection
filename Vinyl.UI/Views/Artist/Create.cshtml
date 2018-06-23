@@ -4,7 +4,7 @@
 }
 <h2><span class="glyphicon glyphicon-plus"></span> @ViewBag.Title</h2>
 <hr />
-@using (Html.BeginForm("Create", "Artist", FormMethod.Post, new { id = "formCrud" }))
+@using (Html.BeginForm("Create", "Artist", FormMethod.Post, new { enctype = "multipart/form-data", id = "formCrud" }))
 {
     @Html.AntiForgeryToken()
 
@@ -29,11 +29,19 @@
             @Html.ValidationMessageFor(model => model.AboutLink, "", new { @class = "text-danger" })
         </div>
     </div>
+    
+    <div class="form-group">
+        @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" id="Avatar" name="upload" />
+        </div>
+    </div>
 
     <div class="form-group">
         <input type="button" value="Salvar" class="btn btn-primary btn-lg" />
     </div>
 }
+@*@Scripts.Render("~/bundles/jquery")*@
 @Scripts.Render("~/bundles/jqueryval")
 <script src="~/Scripts/Project/EnviarFormulario.js"></script>
 <script src="~/Scripts/removeserverbanner.js"></script>

@@ -12,10 +12,12 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/scrollreveal.min.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("estilos", false)
 
+    <meta name="description" content="Vinyl Collection" />
 </head>
 <body>
     <!-- Navigation -->
@@ -26,7 +28,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="@Url.Action("Index", "Home")">Vinyl Collection</a>
+                <a id="brand-navbar" class="navbar-brand page-scroll" href="@Url.Action("Index", "Home")">Vinyl Collection</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -104,3 +106,4 @@
 </body>
 </html>
 <script src="~/Scripts/removeserverbanner.js"></script>
+<script src="~/Scripts/smooth.js"></script>

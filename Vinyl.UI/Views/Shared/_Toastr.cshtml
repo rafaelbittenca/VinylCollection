@@ -1,0 +1,6 @@
+﻿@using Vinyl.UI.Models
+@if (ViewData.ContainsKey("Toastr"))
+{
+    Toastr toastr = ViewData["Toastr"] as Toastr;
+    @ToastrBuilder.ShowToastMessages(toastr);
+}

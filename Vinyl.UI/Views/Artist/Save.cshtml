@@ -1,0 +1,89 @@
+﻿@model Vinyl.UI.ViewModels.ArtistViewModel
+@{
+    ViewBag.Title = "New Artist";
+}
+<!--Navbar Custom for child pages -->
+<link href="~/Content/navbar-custom.css" rel="stylesheet" />
+
+<hr /><hr /><hr />
+<section id="page-newartist" class="content">
+    <h2><span class="glyphicon glyphicon-plus"></span> @ViewBag.Title</h2>
+    <hr />
+    @using (Html.BeginForm("Save", "Artist", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="form-group col-xs-8">
+                @Html.LabelFor(model => model.Name)
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", autofocus = "autofocus" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-8">
+                @Html.LabelFor(model => model.BirthDate)
+                @Html.TextBoxFor(model => model.BirthDate, new { type = "date", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-8">
+                @Html.LabelFor(model => model.AboutLink)
+                @Html.EditorFor(model => model.AboutLink, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AboutLink, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row col-xs-8">
+            <label for="Avatar">Avatar</label>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-8">
+                <div class="input-group input-file" name="upload">
+                    <input type="text" id="Avatar" name="upload" class="form-control" placeholder='Choose a file...' />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default btn-choose" type="button">Choose</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-5">
+                <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+            </div>
+        </div>
+    }
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/removeserverbanner.js"></script>
+    <script>
+        function bs_input_file() {
+            $(".input-file").before(
+                function () {
+                    if (!$(this).prev().hasClass('input-ghost')) {
+                        var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
+                        element.attr("name", $(this).attr("name"));
+                        element.change(function () {
+                            element.next(element).find('input').val((element.val()).split('\\').pop());
+                        });
+                        $(this).find("button.btn-choose").click(function () {
+                            element.click();
+                        });
+
+                        $(this).find('input').css("cursor", "pointer");
+                        $(this).find('input').mousedown(function () {
+                            $(this).parents('.input-file').prev().click();
+                            return false;
+                        });
+                        return element;
+                    }
+                }
+            );
+        }
+        $(function () {
+            bs_input_file();
+        });
+    </script>
+</section>

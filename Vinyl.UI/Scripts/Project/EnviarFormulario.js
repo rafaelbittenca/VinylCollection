@@ -1,15 +1,16 @@
 ﻿var btnAcao = $("input[type='button']");
 var formulario = $("#formCrud");
-
+//var formulario = $($(document.forms[0]));
 btnAcao.on("click", submeter);
 
 function submeter() {
 
-    if (formulario.valid()) {
 
+    if (formulario.valid()) {
         var url = formulario.prop("action");
         var metodo = formulario.prop("method");
         var dadosFormulario = formulario.serialize();
+
         $.ajax({
             url: url,
             type: metodo,
@@ -39,7 +40,7 @@ function tratarRetorno(resultadoServidor) {
 }
 
 function DisplayErrors(errors) {
-    console.log(errors);
+    //console.log(errors);
     toastr.options = {
         "positionClass": "toast-top-center",
         "showDuration": "300"

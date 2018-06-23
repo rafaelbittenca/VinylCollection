@@ -328,6 +328,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RecordController.cs" />
     <Compile Include="Dtos\ArtistDto.cs" />
+    <Compile Include="Extension\MessageControllerBase.cs" />
+    <Compile Include="Extension\MessagesActionFilter.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -346,6 +348,9 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ToastMessage.cs" />
+    <Compile Include="Models\Toastr.cs" />
+    <Compile Include="Models\ToastType.cs" />
     <Compile Include="Modules\EFModule.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -366,6 +371,7 @@
     <Content Include="Content\img\aboutme\01-sm.JPG" />
     <Content Include="Content\img\aboutme\02-sm.jpg" />
     <Content Include="Content\img\aboutme\estacio.gif" />
+    <Content Include="Content\img\aboutme\flextrack.gif" />
     <Content Include="Content\img\aboutme\GitHubMark200x200.jpg" />
     <Content Include="Content\img\aboutme\jquery-ui.js" />
     <Content Include="Content\img\aboutme\jquery-ui.min.js" />
@@ -375,6 +381,7 @@
     <Content Include="Content\img\aboutme\me.jpg" />
     <Content Include="Content\img\aboutme\PluraSight_ASP_NET.jpg" />
     <Content Include="Content\img\aboutme\PluraSight_C.jpg" />
+    <Content Include="Content\img\aboutme\Procom200x200.png" />
     <Content Include="Content\img\aboutme\Unisul001.jpg" />
     <Content Include="Content\img\aboutplay.jpg" />
     <Content Include="Content\img\about\about.jpg" />
@@ -395,6 +402,7 @@
     <Content Include="Content\navbar-custom.css" />
     <Content Include="Content\colors.less" />
     <Content Include="Content\fonts.less" />
+    <Content Include="App_Code\ToastrBuilder.cshtml" />
     <None Include="Content\Site.less" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -528,6 +536,7 @@
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\Project\ControlarGrid.js" />
+    <Content Include="Scripts\Project\EnviarForm.js" />
     <Content Include="Scripts\Project\EnviarFormulario.js" />
     <Content Include="Scripts\Project\Map.js" />
     <Content Include="Scripts\removeserverbanner.js" />
@@ -535,7 +544,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\scrollreveal.min.js" />
     <Content Include="Scripts\site.js" />
+    <Content Include="Scripts\smooth.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -588,6 +599,8 @@
     <Content Include="Views\Artist\Index.cshtml" />
     <Content Include="Views\Record\Index.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Artist\Save.cshtml" />
+    <Content Include="Views\Shared\_Toastr.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
