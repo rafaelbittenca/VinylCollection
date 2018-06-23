@@ -37,6 +37,12 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
+                        <a id="link-about" class="page-scroll" href="#page-about">About</a>
+                    </li>
+                    <li>
+                        <a id="link-contact" class="page-scroll" href="#page-contact">Contact</a>
+                    </li>
+                    <li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <a id="link-artists" class="page-scroll" href="@Url.Action("FullAccess", "Artist")">Artists</a>
@@ -48,12 +54,6 @@
                     </li>
                     <li>
                         <a id="link-records" class="page-scroll" href="@Url.Action("Index", "Record")">Records</a>
-                    </li>
-                    <li>
-                        <a id="link-about" class="page-scroll" href="#page-about">About</a>
-                    </li>
-                    <li>
-                        <a id="link-contact" class="page-scroll" href="#page-contact">Contact</a>
                     </li>
                     <li>
                         @if (User.Identity.IsAuthenticated)
